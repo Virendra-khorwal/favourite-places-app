@@ -3,7 +3,7 @@ import { View } from "react-native"
 const PlaceForm = () => {
     return <View>
         <Text>
-            The Place Form 
+            The Place Form Editing text
         </Text>
     </View>
 }
