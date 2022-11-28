@@ -1,19 +1,35 @@
 import "react-native-gesture-handler";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AllPlaces from "./screens/AllPlaces";
+import AddPlace from "./screens/AddPlace";
+import IconButton from "./UI/IconButton";
+import { Colors } from "./constant/colors";
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <>
       <StatusBar style="dark" />
       <NavigationContainer>
-        <Stack.Navigator>
-            <Stack.Screen name="AllPlaces" component={AllPlaces} />
-            <Stack.Screen name="AddPlace" component={AddPlace} />
+        <Stack.Navigator screenOptions={{
+          headerStyle: {
+            backgroundColor: Colors.red,
+          },
+          headerTintColor: Colors.white,
+          contentStyle: {
+            backgroundColor: Colors.white
+          }
+        }} >
+            <Stack.Screen name="AllPlaces" component={AllPlaces} options= {({navigation}) => ({
+              title: 'Your Favorite Places',
+              headerRight: ({tintColor}) => <IconButton icon="add" size={24} color={tintColor} onPress={() => navigation.navigate('AddPlace')} />
+            })} />
+            <Stack.Screen name="AddPlace" component={AddPlace} options={{
+              title: 'Add a new Place'
+            }} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
