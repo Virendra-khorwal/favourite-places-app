@@ -6,6 +6,7 @@ import {
 } from "expo-image-picker";
 import { useState } from "react";
 import { Colors } from "../../constant/colors";
+import OutlineButton from "../../UI/OutlineButton";
 
 const ImagePicker = () => {
   const [pickedImage, setPickedImage] = useState()
@@ -55,12 +56,10 @@ const ImagePicker = () => {
 
   return (
     <View>
-      <View style={styles.imagePreview}>
-        {
-          imagePreview
-        }
-      </View>
-      <Button title="Take Image" onPress={takeImageHandler} />
+      <View style={styles.imagePreview}>{imagePreview}</View>
+      <OutlineButton onPress={takeImageHandler} icon='camera'>
+        Take Image
+      </OutlineButton>
     </View>
   );
 };
