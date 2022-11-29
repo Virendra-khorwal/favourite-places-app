@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: Colors.blue,
         borderRadius: 4,
+        flexDirection: 'row'
     },
     pressed: {
         opacity: 0.7
